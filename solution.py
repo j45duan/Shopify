@@ -9,7 +9,6 @@ Try to design your system so that you can extend it as you go, and feel free to 
 
 import random
 import string
-import re
 
 class urlShortener:
     def __init__(self):
@@ -29,3 +28,8 @@ class urlShortener:
         for i in range(len(res)):
             res[i] = random.choice(string.ascii_letters)
         return ''.join(res)
+
+    def getOriginal(self, shortenedUrl):
+        parts = shortenedUrl.split('/')
+        shortForm = parts[-1]
+        return self.urls[shortForm]
