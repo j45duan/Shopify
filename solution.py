@@ -14,21 +14,18 @@ import re
 class urlShortener:
     def __init__(self):
         self.urls = dict()
+        self.base = 'shopify.com'
     
     def shortenUrl(self, originalUrl):
-        return
+        randString = self.randomize()
+        while randString in self.urls:
+            randString = self.randomize()
+
+        self.urls[randString] = originalUrl
+        return self.base + '/' + randString
     
     def randomize(self):
         res = [''] * 5
         for i in range(len(res)):
             res[i] = random.choice(string.ascii_letters)
         return ''.join(res)
-
-
-'''
-https://youtube.com/eosuiahnofjlkasdf
-https://youtube.com/eosuiahnofjlkasdf
-https://youtube.com/1
-'''
-urlShorter = urlShortener()
-urlShorter.randomize()
